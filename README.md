@@ -34,6 +34,7 @@ conda create -n sias python=3.6
 
 2. Navigate to directory
 ```shell
+conda activate sias
 cd backend
 ```
 
