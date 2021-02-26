@@ -1,8 +1,35 @@
+import flask
 from flask import Flask
+from flask import jsonify
+from flask import request
+import db
+
 app = Flask(__name__)
 
-@app.route('/helloworld')
-def hello_world():
-    return 'Hello, World!'
+API_PREFIX = '/api'
+
+@app.route(API_PREFIX + '/info', methods=['GET'])
+def get_all_info():
+    data = {
+        'staff': [],
+        'module': []
+    }
+
+    # Get Database
+    database = db.Database()
+
+    # Get All Staff
+    staff_record = database.fetch_all('SELECT Lecturer FROM Staffs', ())
+    for staff in staff_record:
+        data['staff'].append(staff[0])
+
+    # Get All Modules
+    mod_record = database.fetch_all('SELECT Mod FROM Modules', ())
+    for mod in mod_record:
+        data['module'].append(mod[0])
+
+    database.close()
+
+    return jsonify(data)
 
 app.run(host='0.0.0.0')
