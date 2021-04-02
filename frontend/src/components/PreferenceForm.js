@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PerferenceForm.css'
+import './PreferenceForm.css'
 
 import { 
     Button,
@@ -10,33 +10,33 @@ import {
     Slider
 } from "shards-react";
 
-class PerferenceForm extends Component {
+class PreferenceForm extends Component {
     render() {
         return (
             <div className="pfContent">
-                <h1 style={{color:"#555555"}}>Perferences</h1>
+                <h1 style={{color:"#555555"}}>Preferences</h1>
                 <Form>
                     <FormGroup>
-                        <div className="pfPerferenceBlock">
+                        <div className="pfPreferenceBlock">
                             {/*<label htmlFor="name">Name</label>
                             <FormInput className="nameInput" id="name" placeholder="Enter Name" theme="dark"/>*/}
                             <label>Name</label>
                             <FormSelect>
-                                {this.props.perferenceInfo.staff.map((s, i) => (
+                                {this.props.preferenceInfo.staff.map((s, i) => (
                                     <option value={s}>{s}</option>
                                 ))}
                             </FormSelect>
                         </div>
                         <br />
                         <br />
-                        <div className="pfPerferenceBlock">
-                            <label>Perference 1</label>
+                        <div className="pfPreferenceBlock">
+                            <label>Preference 1</label>
                             <FormSelect>
-                                {this.props.perferenceInfo.duty.map((d, i) => (
+                                {this.props.preferenceInfo.duty.map((d, i) => (
                                     <option value={i}>{d.day + " " + d.time + " " + d.module + " " + d.room + " " + d.type}</option>
                                 ))}
                             </FormSelect>
-                            {/*<Slider className="perferenceInput1" 
+                            {/*<Slider className="preferenceInput1" 
                                     connect={[true, false]} 
                                     start={[5]} 
                                     range={{ min: 1, max: 5 }} 
@@ -45,20 +45,20 @@ class PerferenceForm extends Component {
                         </div>
                         <br />
                         <br />
-                        <div className="pfPerferenceBlock">
-                            <label>Perference 2</label>
+                        <div className="pfPreferenceBlock">
+                            <label>Preference 2</label>
                             <FormSelect>
-                                {this.props.perferenceInfo.duty.map((d, i) => (
+                                {this.props.preferenceInfo.duty.map((d, i) => (
                                     <option value={i}>{d.day + " " + d.time + " " + d.module + " " + d.room + " " + d.type}</option>
                                 ))}
                             </FormSelect>
                         </div>
                         <br />
                         <br />
-                        <div className="pfPerferenceBlock">
-                            <label>Perference 3</label>
+                        <div className="pfPreferenceBlock">
+                            <label>Preference 3</label>
                             <FormSelect>
-                                {this.props.perferenceInfo.duty.map((d, i) => (
+                                {this.props.preferenceInfo.duty.map((d, i) => (
                                     <option value={i}>{d.day + " " + d.time + " " + d.module + " " + d.room + " " + d.type}</option>
                                 ))}
                             </FormSelect>
@@ -73,4 +73,4 @@ class PerferenceForm extends Component {
     }
 }
 
-export default PerferenceForm;
+export default PreferenceForm;

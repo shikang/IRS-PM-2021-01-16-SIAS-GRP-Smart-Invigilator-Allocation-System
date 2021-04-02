@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import AppBar from "./AppBar";
-import PerferenceForm from "./PerferenceForm";
+import PreferenceForm from "./PreferenceForm";
 import MainState from "../enums/MainState";
 import CommonConstant from "../util/CommonConstant";
 
@@ -18,11 +18,11 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        this.getPerferenceFormInfo();
+        this.getPreferenceFormInfo();
     }
 
-    getPerferenceFormInfo() {
-        axios.get(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_INFO_API)
+    getPreferenceFormInfo() {
+        axios.get(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_PREFERENCE_INFO_API)
         .then(this.updatePreferenceForm)
         .catch(this.error)
         .then(function () {
@@ -35,7 +35,7 @@ class Main extends Component {
         //this.updateMainState(MainState.ENTER_PREFERENCES);
         this.setState({
             mainState: MainState.ENTER_PREFERENCES,
-            perferenceInfo: response.data
+            preferenceInfo: response.data
         });
     }
 
@@ -53,7 +53,7 @@ class Main extends Component {
         return (
             <div>
                 <AppBar updateMainState={this.updateMainState}/>
-                {this.state.mainState == MainState.ENTER_PREFERENCES && <PerferenceForm perferenceInfo={this.state.perferenceInfo}/>}
+                {this.state.mainState == MainState.ENTER_PREFERENCES && <PreferenceForm preferenceInfo={this.state.preferenceInfo}/>}
                 {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
             </div>
         )

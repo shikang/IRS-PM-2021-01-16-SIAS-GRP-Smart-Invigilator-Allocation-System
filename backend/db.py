@@ -37,5 +37,11 @@ class Database:
         self._execute(query, params)
         return self.cursor.fetchall()
 
+    def execute(self, query, params):
+        print('Database::execute(', query, ', ', params, ')')
+        self._execute(query, params)
+        self.connection.commit()
+        return self.cursor.lastrowid
+
     def close(self):
         self.connection.close()
