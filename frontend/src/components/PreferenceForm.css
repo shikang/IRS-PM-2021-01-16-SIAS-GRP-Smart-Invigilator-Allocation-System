@@ -9,3 +9,9 @@
 .pfPreferenceBlock {
     text-align: left;
 }
+
+.pfPreferenceAddStatusSuccess {
+    background-color: lightgreen;
+    text-align: center;
+    color: darkgreen;
+}

@@ -49,11 +49,31 @@ class Main extends Component {
         });
     }
 
+    submitPreference = (preference) => {
+        console.log(preference);
+        this.updateMainState(MainState.ENTER_PREFERENCES_LOADING);
+
+        axios.post(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_PREFERENCE_ADD_API, preference)
+        .then(this.submitPreferenceFormResponse)
+        .catch(this.error)
+        .then(function () {
+            // always executed
+        });
+    }
+
+    submitPreferenceFormResponse = (response) => {
+        console.log(response.data);
+        //this.updateMainState(MainState.ENTER_PREFERENCES);
+        this.setState({
+            mainState: MainState.ENTER_PREFERENCES_SUCCESS
+        });
+    }
+
     render() {
         return (
             <div>
                 <AppBar updateMainState={this.updateMainState}/>
-                {this.state.mainState == MainState.ENTER_PREFERENCES && <PreferenceForm preferenceInfo={this.state.preferenceInfo}/>}
+                {(this.state.mainState == MainState.ENTER_PREFERENCES || this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS) && <PreferenceForm preferenceInfo={this.state.preferenceInfo} submitPreference={this.submitPreference} showPreferenceSubmitted={this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS}/>}
                 {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
             </div>
         )
