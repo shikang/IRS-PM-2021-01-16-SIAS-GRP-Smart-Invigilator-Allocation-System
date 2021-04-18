@@ -12,7 +12,9 @@
     "react-scripts": "4.0.2",
     "react-spinners": "^0.10.6",
     "shards-react": "^1.0.3",
-    "web-vitals": "^1.1.0"
+    "web-vitals": "^1.1.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/data-grid": "^4.0.0-alpha.25"
   },
   "scripts": {
     "start": "react-scripts start",

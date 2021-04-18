@@ -47,7 +47,7 @@ class AppBar extends Component {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#" active onClick={() => this.props.updateMainState(MainState.VIEW_ALLOCATIONS)}>
+                            <NavLink href="ViewAllocation" active onClick={() => this.props.updateMainState(MainState.VIEW_ALLOCATIONS)}>
                                 Allocations
                             </NavLink>
                         </NavItem>

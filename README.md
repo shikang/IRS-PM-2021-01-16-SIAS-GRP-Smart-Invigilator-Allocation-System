@@ -47,3 +47,19 @@ pip install -r requirements.txt
 ```shell
 python app.py
 ```
+
+## View Allocation Page
+To display the view allocation in table view
+Library used: https://material-ui.com/components/tables/#data-table
+
+1. install the core material-ui
+'''
+npm install @material-ui/core
+'''
+
+2. now intall the data-gird
+'''
+npm install @material-ui/data-grid
+'''
+
+Note: restart npm (if app is already running)
