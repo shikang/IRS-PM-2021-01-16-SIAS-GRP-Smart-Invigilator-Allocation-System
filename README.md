@@ -48,6 +48,21 @@ pip install -r requirements.txt
 python app.py
 ```
 
+## Scheduler
+Service for timetable scheduling
+
+1. Install JDK 1.8+
+
+2. Navigate to directory
+```shell
+cd scheduler/code-with-quarkus
+```
+
+3. Start the Scheduler application
+```shell
+./mvnw compile quarkus:dev
+```
+
 ## View Allocation Page
 To display the view allocation in table view
 Library used: https://material-ui.com/components/tables/#data-table
