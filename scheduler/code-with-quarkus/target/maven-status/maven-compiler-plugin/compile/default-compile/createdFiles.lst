@@ -1,0 +1,9 @@
+org/acme/optaplanner/solver/TimeTableConstraintProvider.class
+org/acme/optaplanner/domain/TimeTable.class
+org/acme/optaplanner/domain/Duty.class
+org/acme/optaplanner/domain/Staff.class
+org/acme/GreetingResource.class
+org/acme/resteasyjackson/JacksonResource.class
+org/acme/resteasyjackson/JacksonResource$Quark.class
+org/acme/optaplanner/rest/TimeTableResource.class
+org/acme/resteasyjackson/MyObjectMapperCustomizer.class
