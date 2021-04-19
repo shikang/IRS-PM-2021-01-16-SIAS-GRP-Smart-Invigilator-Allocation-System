@@ -20,7 +20,8 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 threeSiConflict(constraintFactory),
                 siStdbyConflict(constraintFactory),
                 stdbyConflict(constraintFactory),
-                // Soft constraints are only implemented in optaplanner-quickstart
+                // Soft constraints 
+                preference(constraintFactory)
         };
     }
 
@@ -93,5 +94,12 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
                 .penalize("Stdby conflict", HardSoftScore.ONE_HARD);
     }
 
+    Constraint preference(ConstraintFactory constraintFactory) {
+        // Staff prefers to have their preferred duties.
+        return constraintFactory
+                .from(Duty.class)
+                .filter(duty -> duty.getId() == duty.getStaff().getPreference1() || duty.getId() == duty.getStaff().getPreference2() || duty.getId() == duty.getStaff().getPreference3())
+                .reward("Preference", HardSoftScore.ONE_SOFT);
+    }
 
 }
