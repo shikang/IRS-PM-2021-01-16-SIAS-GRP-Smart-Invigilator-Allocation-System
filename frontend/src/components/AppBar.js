@@ -43,11 +43,11 @@ class AppBar extends Component {
                     <Nav navbar>
                         <NavItem>
                             <NavLink href="#" active onClick={() => this.props.updateMainState(MainState.ENTER_PREFERENCES)}>
-                                Bid
+                                Preferences
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="ViewAllocation" active onClick={() => this.props.updateMainState(MainState.VIEW_ALLOCATIONS)}>
+                            <NavLink href="#" active onClick={() => this.props.updateMainState(MainState.VIEW_ALLOCATIONS)}>
                                 Allocations
                             </NavLink>
                         </NavItem>
