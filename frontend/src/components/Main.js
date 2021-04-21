@@ -78,7 +78,7 @@ class Main extends Component {
             page = <PreferenceForm preferenceInfo={this.state.preferenceInfo} submitPreference={this.submitPreference} showPreferenceSubmitted={this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS}/>
             {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
         } else if(this.state.mainState == MainState.VIEW_ALLOCATIONS) {
-            page =  <ViewAllocation />
+            page =  <ViewAllocation preferenceInfo={this.state.preferenceInfo}/>
         }
                 
         return (
