@@ -32,20 +32,24 @@ const rows = []
  * Add duty object to the rows
  * //TODO: json returned from rest api is missing some fields, i.e. date, time group (also to clarify if read from duty table or merge with allocation table)
  * 
- * @param {object} duty duty object:  
+ * @param {object} allocation duty to lecturer allocation:  
  * {
  *  day: "Mon"
- *  id: 1
  *  length: "1:30"
  *  module: "ME0501"
  *  room: "T1754"
  *  time: "8:30"
  *  type: "Inv"
+ *  staff: "ABCD"
  * }
  * 
  **/
-function addList(duty) {
+function addList(duty, index) {
   if(duty) {
+    duty.id = index+1 //for display purpose, rowNo
+    if(duty.staff) {
+      duty.nameI = duty.staff
+    }
     rows.push(duty)
   }
 }
@@ -53,12 +57,13 @@ function addList(duty) {
 /**
  * Construct and populate the table for rendering purpose
  * 
- * @param preferenceStateInfo duties objects retrieved in Main.js upon loading of app the first Time
+ * @param allocationList allocation objects retrieved in Main.js upon clicking the View Allocation tab
  *
  **/
-export default function ViewAllocation(preferenceStateInfo) {
-  if(preferenceStateInfo && preferenceStateInfo.preferenceInfo && preferenceStateInfo.preferenceInfo.duty) {
-    preferenceStateInfo.preferenceInfo.duty.forEach(addList)
+export default function ViewAllocation(allocationList) {
+  //too nested, ignore for now
+  if(allocationList && allocationList.allocationInfo && allocationList.allocationInfo.allocation) {
+    allocationList.allocationInfo.allocation.forEach(addList)
   }
   return (
     <div className="pfContent">

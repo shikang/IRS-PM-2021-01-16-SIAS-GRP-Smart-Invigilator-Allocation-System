@@ -3,6 +3,7 @@ const CommonConstant = Object.freeze({
 
     "SIAS_PREFERENCE_INFO_API": "/preference/info",
     "SIAS_PREFERENCE_ADD_API": "/preference/add",
+    "SIAS_VIEW_ALLOCATION_API": "/allocation/staff",
 })
 
 export default CommonConstant;
