@@ -122,10 +122,17 @@ def get_all_staff_allocations():
     database = db.Database()
 
     # Get All Allocations
-    allocation_record = database.fetch_all('SELECT DutyId, LecturerId FROM Allocation', ())
+    allocation_record = database.fetch_all('SELECT d.Day, d.Time, d.Length, d.Mod, d.Room, d.Type, s.Lecturer FROM Duties AS d INNER JOIN Allocation AS a ON a.DutyId = d.ID INNER JOIN Staffs AS s ON a.LecturerId = s.ID', ())
     for allocation in allocation_record:
-        data['duty_id'].append(allocation[0])
-        data['lecturer_id'].append(allocation[1])
+        data['allocation'].append({
+            'day': allocation[0],
+            'time': allocation[1],
+            'length': allocation[2],
+            'module': allocation[3],
+            'room': allocation[4],
+            'type': allocation[5],
+            'staff': allocation[6]
+        })
 
     database.close()
 
