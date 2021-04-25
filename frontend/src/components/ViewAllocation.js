@@ -17,9 +17,9 @@ const columns = [
   { field: 'module', headerName: 'Module', sortable: true, width: 150},
   { field: 'type', headerName: 'Type', width: 100},
   { field: 'room', headerName: 'Room', sortable: true, width: 150},
-  { field: 'nameI', headerName: 'I', sortable: true, width: 200},
-  { field: 'nameSI', headerName: 'SI', sortable: true, width: 200},
-  { field: 'nameCI', headerName: 'CI', sortable: true, width: 200}
+  { field: 'nameI', headerName: 'Invigilator', sortable: true, width: 200},
+  { field: 'nameSI', headerName: 'Senior Invigilator', sortable: true, width: 200},
+  { field: 'nameCI', headerName: 'Chief Invigilator', sortable: true, width: 200}
 ];
 
 /**
@@ -47,11 +47,41 @@ const rows = []
 function addList(duty, index) {
   if(duty) {
     duty.id = index+1 //for display purpose, rowNo
-    if(duty.staff) {
+    if(duty.staff && duty.type == 'Inv') {
       duty.nameI = duty.staff
     }
     rows.push(duty)
   }
+}
+
+function processAllocation(list) {
+  //Not optimize, but decent
+  var invList = list.filter(list => list.type == 'Inv');
+  var sInvList = list.filter(list => list.type == 'SI');
+  
+  for(var s=0; s<sInvList.length; s++) {
+    var sInv = sInvList[s];
+    
+    //split the rooms if multiple
+    if(sInv.room) {
+      var sRooms = sInv.room.split(',');
+    
+      for(var r=0; r<sRooms.length; r++) {
+        //find current duty
+        const duty = invList.find(invList => invList.room == sRooms[r]);
+        if(duty) {
+          duty.nameSI = sInv.staff;
+        } else {
+          const newDuty = Object.create(sInv);  //deep copy
+          newDuty.nameSI = sInv.staff;
+          newDuty.room = sRooms[r];
+          invList.push(newDuty);
+        }
+      }
+    }
+  }
+  
+  invList.forEach(addList)
 }
 
 /**
@@ -63,13 +93,18 @@ function addList(duty, index) {
 export default function ViewAllocation(allocationList) {
   //too nested, ignore for now
   if(allocationList && allocationList.allocationInfo && allocationList.allocationInfo.allocation) {
-    allocationList.allocationInfo.allocation.forEach(addList)
+    processAllocation(allocationList.allocationInfo.allocation)
   }
   return (
     <div className="pfContent">
       <h1 style={{color:"#555555"}}>Smart Invigilator Allocation System (SIAS)</h1>
       <div style={{ height: 650, width: '100%', marginTop:'50px', align:'center'}}>
-        <DataGrid rows={rows} columns={columns} pageSize={10} disableMultipleSelection={true} />
+        <DataGrid 
+          rows={rows} 
+          columns={columns} 
+          pageSize={10} 
+          disableMultipleSelection={true} 
+        />
       </div>
     </div>
   );
