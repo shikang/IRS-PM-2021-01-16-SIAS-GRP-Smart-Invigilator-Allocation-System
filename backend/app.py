@@ -139,6 +139,24 @@ def get_all_staff_allocations():
     database.close()
 
     return jsonify(data)
+
+@app.route(API_PREFIX + '/allocation/status', methods=['GET'])
+@cross_origin()
+def get_allocation_status():
+    data = {
+        'status': 'Done'
+    }
+
+    # Get Database
+    database = db.Database()
+
+    # Get Allocation Status
+    allocation_status = database.fetch_one('SELECT Status FROM Status WHERE Type=:type ', ('Allocation',))
+
+    if allocation_status[0] != 0:
+        data['status'] = 'Running'
+    
+    return jsonify(data)
     
 @app.route(API_PREFIX + '/allocation/start', methods=['POST'])
 @cross_origin()
@@ -154,6 +172,16 @@ def start_allocation():
 
     # Get Database
     database = db.Database()
+
+    # Get Allocation Status
+    allocation_status = database.fetch_one('SELECT Status FROM Status WHERE Type=:type ', ('Allocation',))
+
+    print('Allocation Status: ' + str(allocation_status[0]))
+    if allocation_status[0] != 0:
+        data['started'] = False
+        return jsonify(data)
+
+    database.execute('Update Status SET Status = ? WHERE Type = ?', (1, 'Allocation'))
 
     # Get All Duties
     duty_record = database.fetch_all('SELECT ID, Day, Time, Length, Mod, Room, Type, CI FROM Duties', ())
@@ -195,6 +223,14 @@ def run_solver(request_body):
     res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=500)
     print('Solver: ' + res.text)
 
+    # Get Database
+    database = db.Database()
+
     # Add results to database
+
+    # Update status
+    database.execute('Update Status SET Status = ? WHERE Type = ?', (0, 'Allocation'))
+
+    database.close()
 
 app.run(host='0.0.0.0')
