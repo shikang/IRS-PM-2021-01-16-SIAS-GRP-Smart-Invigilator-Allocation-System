@@ -36,7 +36,7 @@ def get_all_info():
         data['module'].append(mod[0])
 
     # Get All Duties
-    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID FROM Duties', ())
+    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID, CI FROM Duties', ())
     for duty in duty_record:
         data['duty'].append({
             'day': duty[0],
@@ -45,7 +45,8 @@ def get_all_info():
             'module': duty[3],
             'room': duty[4],
             'type': duty[5],
-            'id': duty[6]
+            'id': duty[6],
+            'ci': duty[7]
         })
 
     database.close()
@@ -96,7 +97,7 @@ def get_all_staff_preferences():
         })
 
     # Get All Duties
-    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID FROM Duties', ())
+    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID, CI FROM Duties', ())
     for duty in duty_record:
         data['duty'].append({
             'day': duty[0],
@@ -105,7 +106,8 @@ def get_all_staff_preferences():
             'module': duty[3],
             'room': duty[4],
             'type': duty[5],
-            'id': duty[6]
+            'id': duty[6],
+            'ci': duty[7]
         })
 
     database.close()
@@ -124,7 +126,7 @@ def get_all_staff_allocations():
     database = db.Database()
 
     # Get All Allocations
-    allocation_record = database.fetch_all('SELECT d.Day, d.Time, d.Length, d.Mod, d.Room, d.Type, s.Lecturer FROM Duties AS d INNER JOIN Allocation AS a ON a.DutyId = d.ID INNER JOIN Staffs AS s ON a.LecturerId = s.ID', ())
+    allocation_record = database.fetch_all('SELECT d.Day, d.Time, d.Length, d.Mod, d.Room, d.Type, s.Lecturer, d.CI FROM Duties AS d INNER JOIN Allocation AS a ON a.DutyId = d.ID INNER JOIN Staffs AS s ON a.LecturerId = s.ID', ())
     for allocation in allocation_record:
         data['allocation'].append({
             'day': allocation[0],
@@ -133,7 +135,8 @@ def get_all_staff_allocations():
             'module': allocation[3],
             'room': allocation[4],
             'type': allocation[5],
-            'staff': allocation[6]
+            'staff': allocation[6],
+            'ci': allocation[7]
         })
 
     database.close()
