@@ -6,6 +6,7 @@ from flask import jsonify
 from flask import request
 import db
 import requests
+import threading
 
 app = Flask(__name__)
 
@@ -181,10 +182,19 @@ def start_allocation():
 
     database.close()
 
-    # Send Schedule request
-    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body)
-    print('Scheduler: ' + res.text)
+    # Run solver in different thread
+    solver_thread = threading.Thread(target=run_solver, name="Downloader", args=[request_body])
+    solver_thread.start()
 
     return jsonify(data)
+
+def run_solver(request_body):
+    print('Running solver n background...')
+
+    # Send Schedule request
+    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=500)
+    print('Solver: ' + res.text)
+
+    # Add results to database
 
 app.run(host='0.0.0.0')
