@@ -5,6 +5,7 @@ from flask_cors import cross_origin
 from flask import jsonify
 from flask import request
 import db
+import requests
 
 app = Flask(__name__)
 
@@ -138,5 +139,52 @@ def get_all_staff_allocations():
 
     return jsonify(data)
     
+@app.route(API_PREFIX + '/allocation/start', methods=['POST'])
+@cross_origin()
+def start_allocation():
+    data = {
+        'started': True
+    }
+
+    request_body = {
+        "dutyList": [],
+        "staffList": []
+    }
+
+    # Get Database
+    database = db.Database()
+
+    # Get All Duties
+    duty_record = database.fetch_all('SELECT ID, Day, Time, Length, Mod, Room, Type, CI FROM Duties', ())
+    for duty in duty_record:
+        request_body['dutyList'].append({
+            'id': duty[0],
+            'day': duty[1],
+            'time': duty[2],
+            'length': duty[3],
+            'module': duty[4],
+            'room': duty[5],
+            'type': duty[6],
+            'ci': duty[7],
+        })
+
+    # Get All Preference
+    pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
+    for pref in pref_record:
+        request_body['staffList'].append({
+            'name': pref[0],
+            'preference1': pref[1],
+            'preference2': pref[2],
+            'preference3': pref[3],
+            'timestamp': pref[4]
+        })
+
+    database.close()
+
+    # Send Schedule request
+    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body)
+    print('Scheduler: ' + res.text)
+
+    return jsonify(data)
 
 app.run(host='0.0.0.0')
