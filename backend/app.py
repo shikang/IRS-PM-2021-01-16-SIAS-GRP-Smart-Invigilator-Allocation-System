@@ -203,25 +203,25 @@ def start_allocation():
         })
 
     # Get All Preference
-    #pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
-    #for pref in pref_record:
-    #    request_body['staffList'].append({
-    #        'name': pref[0],
-    #        'preference1': pref[1],
-    #        'preference2': pref[2],
-    #        'preference3': pref[3],
-    #        'timestamp': pref[4]
-    #    })
-
-    pref_record = database.fetch_all('SELECT Lecturer FROM Staffs', ())
+    pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences UNION SELECT s.Lecturer AS Staff, NULL AS Preference1, NULL AS Preference2, NULL AS Preference3, NULL AS Timestamp FROM Staffs s WHERE s.Lecturer NOT IN (SELECT Staff FROM Preferences)', ())
     for pref in pref_record:
         request_body['staffList'].append({
             'name': pref[0],
-            'preference1': None,
-            'preference2': None,
-            'preference3': None,
-            'timestamp': None
+            'preference1': pref[1],
+            'preference2': pref[2],
+            'preference3': pref[3],
+            'timestamp': pref[4]
         })
+
+    #pref_record = database.fetch_all('SELECT Lecturer FROM Staffs', ())
+    #for pref in pref_record:
+    #    request_body['staffList'].append({
+    #        'name': pref[0],
+    #        'preference1': None,
+    #        'preference2': None,
+    #        'preference3': None,
+    #        'timestamp': None
+    #    })
 
     database.close()
 
@@ -235,7 +235,7 @@ def run_solver(request_body):
     print('Running solver n background...')
 
     # Send Schedule request
-    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=1000)
+    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=4000)
     print('Solver: ' + res.text)
 
     # Get Database
@@ -286,17 +286,6 @@ def start_allocation_with_rand_pref():
             'type': duty[6],
             'ci': duty[7],
         })
-
-    # Get All Preference
-    #pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
-    #for pref in pref_record:
-    #    request_body['staffList'].append({
-    #        'name': pref[0],
-    #        'preference1': pref[1],
-    #        'preference2': pref[2],
-    #        'preference3': pref[3],
-    #        'timestamp': pref[4]
-    #    })
 
     now = int(time.time()) 
 
