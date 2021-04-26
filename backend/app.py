@@ -241,7 +241,19 @@ def run_solver(request_body):
     # Get Database
     database = db.Database()
 
-    # Add results to database
+    database.execute('DELETE FROM Allocation', ())
+
+    # Add results to database (Should execute without commit)
+    data = res.json()
+    for duty in data['dutyList']:
+        print("Allocation - Duty: " + str(duty['id']) + " | Staff: " + duty['staff']['name'])
+
+        # Should combine query
+        staff_id = database.fetch_one('SELECT ID FROM Staffs WHERE Lecturer = ?', (duty['staff']['name'],))
+
+        # Should do batch insert
+        database.execute('INSERT INTO Allocation (DutyId, LecturerId) VALUES(?, ?)', (duty['id'], staff_id[0]))
+
 
     # Update status
     database.execute('Update Status SET Status = ? WHERE Type = ?', (0, 'Allocation'))
