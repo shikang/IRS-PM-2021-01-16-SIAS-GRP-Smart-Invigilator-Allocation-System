@@ -7,6 +7,8 @@ from flask import request
 import db
 import requests
 import threading
+from random import randrange
+import time
 
 app = Flask(__name__)
 
@@ -201,14 +203,24 @@ def start_allocation():
         })
 
     # Get All Preference
-    pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
+    #pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
+    #for pref in pref_record:
+    #    request_body['staffList'].append({
+    #        'name': pref[0],
+    #        'preference1': pref[1],
+    #        'preference2': pref[2],
+    #        'preference3': pref[3],
+    #        'timestamp': pref[4]
+    #    })
+
+    pref_record = database.fetch_all('SELECT Lecturer FROM Staffs', ())
     for pref in pref_record:
         request_body['staffList'].append({
             'name': pref[0],
-            'preference1': pref[1],
-            'preference2': pref[2],
-            'preference3': pref[3],
-            'timestamp': pref[4]
+            'preference1': None,
+            'preference2': None,
+            'preference3': None,
+            'timestamp': None
         })
 
     database.close()
@@ -223,7 +235,7 @@ def run_solver(request_body):
     print('Running solver n background...')
 
     # Send Schedule request
-    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=500)
+    res = requests.post('http://localhost:8080/timeTable/solve', json=request_body, timeout=1000)
     print('Solver: ' + res.text)
 
     # Get Database
@@ -235,5 +247,75 @@ def run_solver(request_body):
     database.execute('Update Status SET Status = ? WHERE Type = ?', (0, 'Allocation'))
 
     database.close()
+
+@app.route(API_PREFIX + '/allocation/random', methods=['POST'])
+@cross_origin()
+def start_allocation_with_rand_pref():
+    data = {
+        'started': True
+    }
+
+    request_body = {
+        "dutyList": [],
+        "staffList": []
+    }
+
+    # Get Database
+    database = db.Database()
+
+    # Get Allocation Status
+    allocation_status = database.fetch_one('SELECT Status FROM Status WHERE Type=:type ', ('Allocation',))
+
+    print('Allocation Status: ' + str(allocation_status[0]))
+    if allocation_status[0] != 0:
+        data['started'] = False
+        return jsonify(data)
+
+    database.execute('Update Status SET Status = ? WHERE Type = ?', (1, 'Allocation'))
+
+    # Get All Duties
+    duty_record = database.fetch_all('SELECT ID, Day, Time, Length, Mod, Room, Type, CI FROM Duties', ())
+    for duty in duty_record:
+        request_body['dutyList'].append({
+            'id': duty[0],
+            'day': duty[1],
+            'time': duty[2],
+            'length': duty[3],
+            'module': duty[4],
+            'room': duty[5],
+            'type': duty[6],
+            'ci': duty[7],
+        })
+
+    # Get All Preference
+    #pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
+    #for pref in pref_record:
+    #    request_body['staffList'].append({
+    #        'name': pref[0],
+    #        'preference1': pref[1],
+    #        'preference2': pref[2],
+    #        'preference3': pref[3],
+    #        'timestamp': pref[4]
+    #    })
+
+    now = int(time.time()) 
+
+    pref_record = database.fetch_all('SELECT Lecturer FROM Staffs', ())
+    for pref in pref_record:
+        request_body['staffList'].append({
+            'name': pref[0],
+            'preference1': randrange(len(duty_record) + 1),
+            'preference2': randrange(len(duty_record) + 1),
+            'preference3': randrange(len(duty_record) + 1),
+            'timestamp': now + randrange(1000) - 500
+        })
+
+    database.close()
+
+    # Run solver in different thread
+    solver_thread = threading.Thread(target=run_solver, name="Downloader", args=[request_body])
+    solver_thread.start()
+
+    return jsonify(data)
 
 app.run(host='0.0.0.0')
