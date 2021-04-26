@@ -14,12 +14,13 @@ class Main extends Component {
         super(props);
     
         this.state = {
-            mainState: MainState.ENTER_PREFERENCES_LOADING
+            mainState: MainState.VIEW_ALLOCATIONS_LOADING
         };
     }
 
     componentDidMount() {
-        this.getPreferenceFormInfo();
+        //this.getPreferenceFormInfo();
+        this.getAllocation();
     }
     
     /**
