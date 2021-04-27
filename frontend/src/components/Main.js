@@ -20,7 +20,7 @@ class Main extends Component {
 
     componentDidMount() {
         //this.getPreferenceFormInfo();
-        this.getAllocation();
+        //will call getAllocation() within the ViewAllocation page itself
     }
     
     /**
@@ -34,9 +34,7 @@ class Main extends Component {
                 this.setState({
                     mainState: MainState.VIEW_ALLOCATIONS_LOADING
                 });
-            } else {
-                this.getAllocation()
-            }
+            } 
         }
     }
 
@@ -46,29 +44,6 @@ class Main extends Component {
         .catch(this.error)
         .then(function () {
             // always executed
-        });
-    }
-    
-    /**
-     * Get the allocation list of duty and assign lecturer
-     **/
-    getAllocation() {
-      axios.get(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_VIEW_ALLOCATION_API)
-        .then(this.updateViewAllocationForm)
-        .catch(this.error)
-        .then(function () {
-            // always executed
-        });
-    }
-    
-    /**
-     * Update the main state at the completion of getAllocation
-     **/
-    updateViewAllocationForm = (response) => {
-        console.log('updateViewAllocationForm', response.data);
-        this.setState({
-            mainState: MainState.VIEW_ALLOCATIONS_LOADING,
-            allocationInfo: response.data
         });
     }
 
@@ -121,7 +96,8 @@ class Main extends Component {
             page = <PreferenceForm preferenceInfo={this.state.preferenceInfo} submitPreference={this.submitPreference} showPreferenceSubmitted={this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS}/>
             {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
         } else if(this.state.mainState == MainState.VIEW_ALLOCATIONS_LOADING) {
-            page =  <ViewAllocation allocationInfo={this.state.allocationInfo}/>
+            console.log('Main', this.state.allocationInfo);
+            page =  <ViewAllocation/>
         }
                 
         return (
