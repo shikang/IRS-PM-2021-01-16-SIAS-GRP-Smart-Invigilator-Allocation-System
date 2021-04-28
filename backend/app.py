@@ -251,7 +251,7 @@ def start_allocation():
 
     it_list = numpy.argsort(t_list)
     for i in range(len(it_list)):
-        request_body['staffList'][i]['timestamp'] = int(it_list[i])
+        request_body['staffList'][i]['timestamp'] = len(it_list) - int(it_list[i])
 
     database.close()
 
@@ -369,7 +369,7 @@ def start_allocation_with_rand_pref():
 
     it_list = numpy.argsort(t_list)
     for i in range(len(it_list)):
-        request_body['staffList'][i]['timestamp'] = int(it_list[i])
+        request_body['staffList'][i]['timestamp'] = len(it_list) - int(it_list[i])
 
     database.close()
 
