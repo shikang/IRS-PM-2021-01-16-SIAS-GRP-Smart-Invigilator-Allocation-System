@@ -223,6 +223,28 @@ def start_allocation():
     #        'timestamp': None
     #    })
 
+    now = int(time.time()) 
+
+    count = 0
+    total = 0
+    min_val = now
+    max_val = 0
+    for s in request_body['staffList']:
+        val = now - s['timestamp']
+        count = count + 1
+        total = total + val
+
+        if min_val > val:
+            min_val = val
+
+        if max_val < val:
+            max_val = val
+
+    mean_val = total / count
+    for s in request_body['staffList']:
+        val = now - s['timestamp']
+        s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
+
     database.close()
 
     # Run solver in different thread
@@ -246,14 +268,16 @@ def run_solver(request_body):
     # Add results to database (Should execute without commit)
     data = res.json()
     for duty in data['dutyList']:
-        print("Allocation - Duty: " + str(duty['id']) + " | Staff: " + duty['staff']['name'])
+        if 'staff' in duty :
+            print("Allocation - Duty: " + str(duty['id']) + " | Staff: " + duty['staff']['name'])
 
-        # Should combine query
-        staff_id = database.fetch_one('SELECT ID FROM Staffs WHERE Lecturer = ?', (duty['staff']['name'],))
+            # Should combine query
+            staff_id = database.fetch_one('SELECT ID FROM Staffs WHERE Lecturer = ?', (duty['staff']['name'],))
 
-        # Should do batch insert
-        database.execute('INSERT INTO Allocation (DutyId, LecturerId) VALUES(?, ?)', (duty['id'], staff_id[0]))
-
+            # Should do batch insert
+            database.execute('INSERT INTO Allocation (DutyId, LecturerId) VALUES(?, ?)', (duty['id'], staff_id[0]))
+        else:
+            print("Allocation - Duty: " + str(duty['id']) + " | NOT ALLOCATED")
 
     # Update status
     database.execute('Update Status SET Status = ? WHERE Type = ?', (0, 'Allocation'))
@@ -310,6 +334,26 @@ def start_allocation_with_rand_pref():
             'preference3': randrange(len(duty_record) + 1),
             'timestamp': now + randrange(1000) - 500
         })
+
+    count = 0
+    total = 0
+    min_val = now + 500
+    max_val = 0
+    for s in request_body['staffList']:
+        val = now + 500 - s['timestamp']
+        count = count + 1
+        total = total + val
+
+        if min_val > val:
+            min_val = val
+
+        if max_val < val:
+            max_val = val
+
+    mean_val = total / count
+    for s in request_body['staffList']:
+        val = now + 500 - s['timestamp']
+        s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
 
     database.close()
 
