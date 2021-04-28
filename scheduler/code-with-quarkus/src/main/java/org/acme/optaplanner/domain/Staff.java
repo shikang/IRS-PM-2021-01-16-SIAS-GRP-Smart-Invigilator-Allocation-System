@@ -6,12 +6,12 @@ public class Staff {
     private Integer preference1;
     private Integer preference2;
     private Integer preference3;
-    private Integer timestamp;
+    private Float timestamp;
 
     public Staff() {
     }
 
-    public Staff(String name, Integer preference1, Integer preference2, Integer preference3, Integer timestamp) {
+    public Staff(String name, Integer preference1, Integer preference2, Integer preference3, Float timestamp) {
         this.name = name;
         this.preference1 = preference1;
         this.preference2 = preference2;
@@ -35,7 +35,7 @@ public class Staff {
         return preference3;
     }
 
-    public Integer getTimestamp() {
+    public Float getTimestamp() {
         return timestamp;
     }
 
