@@ -82,7 +82,7 @@ class ViewAllocation extends Component {
                     var sRooms = sInv.room.split(',');
                     for(var r=0; r<sRooms.length; r++) {
                         //find current duty
-                        const duty = invList.find(invList => invList.room == sRooms[r]);
+                        const duty = invList.find(invList => ((invList.room == sRooms[r]) && (invList.day == sInv.day) && (invList.time == sInv.time)));
                         if(duty) {
                             duty.nameSI = sInv.staff;
                         } else {
