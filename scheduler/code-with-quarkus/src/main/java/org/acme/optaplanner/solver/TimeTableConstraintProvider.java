@@ -39,15 +39,25 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
     private Constraint dayConflict(ConstraintFactory constraintFactory) {
-        // A staff cannot have more than one duty on the same day.
+        // A staff cannot have back-to-back duties.
         return constraintFactory
                 // Select unique pair of duties
                 .fromUniquePair(Duty.class,
                         // Check same staff
                         Joiners.equal(Duty::getStaff),
                         // Check same day
-                        Joiners.equal(Duty::getDay))
-                        // penalize duties with same staff and same day
+                        Joiners.equal(Duty::getDay)),
+                        // filter if the duties are back-to-back
+                        filter((d1, d2) -> d1.getTime() == d2.getTime() || 
+                            d1.getTime() == '8:30' && d2.getTime() == '11:00' || 
+                            d1.getTime() == '11:00' && d2.getTime() == '8:30' ||
+                            d1.getTime() == '11:00' && d2.getTime() == '13:30' ||
+                            d1.getTime() == '13:30' && d2.getTime() == '11:00' ||
+                            d1.getTime() == '13:30' && d2.getTime() == '15:00' ||
+                            d1.getTime() == '15:00' && d2.getTime() == '13:30' ||
+                            d1.getTime() == '15:00' && d2.getTime() == '16:00' ||
+                            d1.getTime() == '16:00' && d2.getTime() == '15:00')
+                        // penalize duties that are back-to-back
                 .penalize("Day conflict", HardSoftScore.ONE_HARD);
     }
 
@@ -99,7 +109,7 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
         return constraintFactory
                 .from(Duty.class)
                 .filter(duty -> duty.getId() == duty.getStaff().getPreference1() || duty.getId() == duty.getStaff().getPreference2() || duty.getId() == duty.getStaff().getPreference3())
-                .reward("Preference", HardSoftScore.ONE_SOFT);
+                .reward("Preference", HardSoftScore.ONE_SOFT, duty.getStaff().getTimestamp());
     }
 
 }
