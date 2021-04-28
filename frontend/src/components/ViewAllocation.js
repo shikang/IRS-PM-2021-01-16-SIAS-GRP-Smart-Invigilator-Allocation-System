@@ -69,8 +69,6 @@ class ViewAllocation extends Component {
      * }
      **/
     processAllocation(list) {
-        console.log("processAllocation", list);
-        
         //Not optimize, but decent
         var invList = list.filter(list => list.type == 'Inv');
         var sInvList = list.filter(list => list.type == 'SI');
@@ -100,7 +98,7 @@ class ViewAllocation extends Component {
         
         let newRows = [];
         for(var index=0; index<invList.length; index++) {
-            var duty = invList[0];
+            var duty = invList[index];
             if(duty) {
               duty.id = index+1 //for display purpose, rowNo
               if(duty.staff && duty.type == 'Inv') {
@@ -110,9 +108,9 @@ class ViewAllocation extends Component {
             }
         }
         
-        this.setState(prevState => ({
+        this.setState({
             rows: newRows
-        }));
+        });
     }
     
     /**
@@ -128,7 +126,6 @@ class ViewAllocation extends Component {
     }
     
     onAllocationCompleted = (response) => {
-        console.log('onAllocationCompleted', response);
         if(response && response.data && response.data.allocation) {
             this.processAllocation(response.data.allocation);
         }
@@ -146,7 +143,7 @@ class ViewAllocation extends Component {
      * This may take a while depending on data size
      **/
     startSolver() {
-        console.log('startSolver is called')
+        console.log('startSolver is called, prepare to wait and kill the process in case of indefinite waiting')
         axios.post(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_SOLVER_START_API)
           .then(this.getSolverStatus(0))
           .catch(this.error)
@@ -159,7 +156,7 @@ class ViewAllocation extends Component {
      * Polling for solver status until it is completed.
      **/
     async getSolverStatus(retryCount) {
-        console.log("getSolverStatus is called");
+        console.log("getSolverStatus is called with count", retryCount);
         
         let response = await axios.get(CommonConstant.SIAS_API_PREFIX + CommonConstant.SIAS_SOLVER_STATUS_API);
         
@@ -196,7 +193,7 @@ class ViewAllocation extends Component {
      * Call solver for re-allocation
      **/
     runAllocation() {
-        console.log("runAllocation is called");
+        console.log("runAllocation is called to start the solver");
         this.setState({
             allocationProcess: viewState.ALLOCATION_RUNNING
         });

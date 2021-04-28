@@ -14,28 +14,13 @@ class Main extends Component {
         super(props);
     
         this.state = {
-            mainState: MainState.VIEW_ALLOCATIONS_LOADING
+            mainState: MainState.VIEW_ALLOCATIONS
         };
     }
 
     componentDidMount() {
         //this.getPreferenceFormInfo();
         //will call getAllocation() within the ViewAllocation page itself
-    }
-    
-    /**
-     * Handle anything when UI state changed
-     **/
-    componentDidUpdate() {
-        //Fetch allocation list when View Allocation tab is clicked
-        //Only fetch when the list is still empty (first time) or preferences are updated to avoid redundant expensive calls
-        if(this.state.mainState == MainState.VIEW_ALLOCATIONS) {
-            if(this.state.allocationInfo) {
-                this.setState({
-                    mainState: MainState.VIEW_ALLOCATIONS_LOADING
-                });
-            } 
-        }
     }
 
     getPreferenceFormInfo() {
@@ -103,8 +88,7 @@ class Main extends Component {
         if(this.state.mainState == MainState.ENTER_PREFERENCES || this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS) {
             page = <PreferenceForm preferenceInfo={this.state.preferenceInfo} submitPreference={this.submitPreference} showPreferenceSubmitted={this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS}/>
             {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
-        } else if(this.state.mainState == MainState.VIEW_ALLOCATIONS_LOADING) {
-            console.log('Main', this.state.allocationInfo);
+        } else if(this.state.mainState == MainState.VIEW_ALLOCATIONS) {
             page =  <ViewAllocation/>
         }
                 
