@@ -61,9 +61,17 @@ class Main extends Component {
     }
 
     updateMainState = (mainState) => {
-        this.setState({
-            mainState
-        });
+        if (mainState == MainState.ENTER_PREFERENCES) {
+            this.setState({
+                mainState: MainState.ENTER_PREFERENCES_LOADING
+            });
+            this.getPreferenceFormInfo();
+        }
+        else {
+            this.setState({
+                mainState
+            });
+        }
     }
 
     submitPreference = (preference) => {
