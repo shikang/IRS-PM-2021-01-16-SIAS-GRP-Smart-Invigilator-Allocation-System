@@ -39,7 +39,7 @@ def get_all_info():
         data['module'].append(mod[0])
 
     # Get All Duties
-    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID, CI FROM Duties', ())
+    duty_record = database.fetch_all('SELECT Day, Time, Length, Mod, Room, Type, ID, CI FROM Duties WHERE Type = \'Inv\'', ())
     for duty in duty_record:
         data['duty'].append({
             'day': duty[0],
