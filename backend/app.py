@@ -9,6 +9,7 @@ import requests
 import threading
 from random import randrange
 import time
+import numpy
 
 app = Flask(__name__)
 
@@ -223,27 +224,34 @@ def start_allocation():
     #        'timestamp': None
     #    })
 
-    now = int(time.time()) 
+    #now = int(time.time()) 
+    #count = 0
+    #total = 0
+    #min_val = now
+    #max_val = 0
+    #for s in request_body['staffList']:
+    #    val = now - s['timestamp']
+    #    count = count + 1
+    #    total = total + val
+    #
+    #    if min_val > val:
+    #        min_val = val
+    #
+    #    if max_val < val:
+    #        max_val = val
+    #
+    #mean_val = float(total) / float(count)
+    #for s in request_body['staffList']:
+    #    val = now - s['timestamp']
+    #    s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
 
-    count = 0
-    total = 0
-    min_val = now
-    max_val = 0
+    t_list = []
     for s in request_body['staffList']:
-        val = now - s['timestamp']
-        count = count + 1
-        total = total + val
+        t_list.append(s['timestamp'])
 
-        if min_val > val:
-            min_val = val
-
-        if max_val < val:
-            max_val = val
-
-    mean_val = total / count
-    for s in request_body['staffList']:
-        val = now - s['timestamp']
-        s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
+    it_list = numpy.argsort(t_list)
+    for i in range(len(it_list)):
+        request_body['staffList'][i]['timestamp'] = int(it_list[i])
 
     database.close()
 
@@ -335,25 +343,33 @@ def start_allocation_with_rand_pref():
             'timestamp': now + randrange(1000) - 500
         })
 
-    count = 0
-    total = 0
-    min_val = now + 500
-    max_val = 0
+    #count = 0
+    #total = 0
+    #min_val = now + 500
+    #max_val = 0
+    #for s in request_body['staffList']:
+    #    val = now + 500 - s['timestamp']
+    #    count = count + 1
+    #    total = total + val
+    #
+    #    if min_val > val:
+    #        min_val = val
+    #
+    #    if max_val < val:
+    #        max_val = val
+    #
+    #mean_val = float(total) / float(count)
+    #for s in request_body['staffList']:
+    #    val = now + 500 - s['timestamp']
+    #    s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
+
+    t_list = []
     for s in request_body['staffList']:
-        val = now + 500 - s['timestamp']
-        count = count + 1
-        total = total + val
+        t_list.append(s['timestamp'])
 
-        if min_val > val:
-            min_val = val
-
-        if max_val < val:
-            max_val = val
-
-    mean_val = total / count
-    for s in request_body['staffList']:
-        val = now + 500 - s['timestamp']
-        s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
+    it_list = numpy.argsort(t_list)
+    for i in range(len(it_list)):
+        request_body['staffList'][i]['timestamp'] = int(it_list[i])
 
     database.close()
 
