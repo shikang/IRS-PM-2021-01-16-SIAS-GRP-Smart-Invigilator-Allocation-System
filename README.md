@@ -1,5 +1,10 @@
 # SIAS
 
+## Tested on
+
+OS: Ubuntu-18.04 / Ubuntu-20.04
+Browser: Firefox 85.0.1
+
 ## Frontend
 To run frontend locally
 
@@ -27,31 +32,40 @@ npm start
 ## Backend / Scheduled Task
 To run backend locally
 
-1. Create clean conda environment (First time only) 
+1. Install anaconda
+```shell
+curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
+bash Anaconda3-2019.03-Linux-x86_64.sh
+```
+
+2. Create clean conda environment (First time only) 
 ```shell
 conda create -n sias python=3.6
 ```
 
-2. Navigate to directory
+3. Navigate to directory
 ```shell
 conda activate sias
 cd backend
 ```
 
-3. Install dependencies
+4. Install dependencies
 ```shell
 pip install -r requirements.txt
 ```
 
-4. Start Backend / Scheduled Task
+5. Start Backend / Scheduled Task
 ```shell
 python app.py
 ```
 
 ## Scheduler
-Service for timetable scheduling
+To run scheduler service locally
 
 1. Install JDK 1.8+
+```shell
+sudo apt install default-jdk
+```
 
 2. Navigate to directory
 ```shell
