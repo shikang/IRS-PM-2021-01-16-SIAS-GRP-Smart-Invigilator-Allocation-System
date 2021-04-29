@@ -63,7 +63,12 @@ class PreferenceForm extends Component {
             });
         }
         else {
-            this.setState({staff: event.target.value});
+            this.setState({
+                staff: event.target.value,
+                preference1: 0,
+                preference2: 1,
+                preference3: 2
+            });
         }
     }
 
