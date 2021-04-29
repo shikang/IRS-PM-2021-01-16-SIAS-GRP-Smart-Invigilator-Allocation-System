@@ -22,7 +22,8 @@ def get_all_info():
     data = {
         'staff': [],
         'module': [],
-        'duty': []
+        'duty': [],
+        'preference': []
     }
 
     # Get Database
@@ -52,6 +53,15 @@ def get_all_info():
             'ci': duty[7]
         })
 
+    # Get All Preferences
+    pref_record = database.fetch_all('SELECT Staff, Preference1, Preference2, Preference3, Timestamp FROM Preferences', ())
+    for pref in pref_record:
+        data['preference'].append({
+            'staff': pref[0],
+            'preferences': [pref[1], pref[2], pref[3]],
+            'timestamp': pref[4]
+        })
+
     database.close()
 
     return jsonify(data)
@@ -71,9 +81,15 @@ def set_preference():
     # Get Database
     database = db.Database()
 
-    # Insert Preference
-    inserted_row = database.execute('INSERT INTO Preferences (Staff, Preference1, Preference2, Preference3, Timestamp) VALUES(?, ?, ?, ?, strftime(\'%s\',\'now\'))', (staff, preference1, preference2, preference3))
-    data['id'] = inserted_row
+    # Get Preference
+    pref_record = database.fetch_all('SELECT ID Timestamp FROM Preferences WHERE Staff = ?', (staff, ))
+    if len(pref_record) > 0:
+        database.execute('UPDATE Preferences SET Preference1 = ?, Preference2 = ?, Preference3 = ? WHERE Staff = ?', (preference1, preference2, preference3, staff))
+        data['id'] = pref_record[0][0]
+    else:
+        # Insert Preference
+        inserted_row = database.execute('INSERT INTO Preferences (Staff, Preference1, Preference2, Preference3, Timestamp) VALUES(?, ?, ?, ?, strftime(\'%s\',\'now\'))', (staff, preference1, preference2, preference3))
+        data['id'] = inserted_row
 
     database.close()
 

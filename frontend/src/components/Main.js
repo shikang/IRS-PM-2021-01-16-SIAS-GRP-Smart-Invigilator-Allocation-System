@@ -87,8 +87,11 @@ class Main extends Component {
         //TODO: Temporary linkage
         if(this.state.mainState == MainState.ENTER_PREFERENCES || this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS) {
             page = <PreferenceForm preferenceInfo={this.state.preferenceInfo} submitPreference={this.submitPreference} showPreferenceSubmitted={this.state.mainState == MainState.ENTER_PREFERENCES_SUCCESS}/>
-            {this.state.mainState == MainState.ENTER_PREFERENCES_LOADING && <ClipLoader loading={true} size={150} />}
-        } else if(this.state.mainState == MainState.VIEW_ALLOCATIONS) {
+        } 
+        else if (this.state.mainState == MainState.ENTER_PREFERENCES_LOADING) {
+            page = <ClipLoader loading={true} size={150} />
+        }
+        else if(this.state.mainState == MainState.VIEW_ALLOCATIONS) {
             page =  <ViewAllocation/>
         }
                 
