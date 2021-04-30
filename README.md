@@ -9,11 +9,11 @@ Browser: Firefox 85.0.1
 
 ## Download the Package and Extract the content
 
-1. Extract the Package from GitHub and move into SIAS folder (First time only)
+1. Extract the Package from GitHub and move into "/sias" directory (First time only)
 ```shell
 git clone https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
-mv IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System sias
-cd sias
+sudo mv IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System /sias
+cd /sias
 ```
 
 ## Frontend
@@ -25,9 +25,9 @@ sudo apt update
 sudo apt install npm
 ```
 
-2. Navigate to directory
+2. Navigate to "/sias/frontend" directory
 ```shell
-cd frontend
+cd /sias/frontend
 ```
 
 3. Install dependencies
@@ -38,29 +38,37 @@ npm install
 ## Backend
 To run backend locally
 
-1. Install curl (if not installed already)
+1. Navigate back to "sias" directory
+```shell
+cd /sias
+```
+
+2. Install curl (if required)
 ```shell
 sudo apt install curl
 ```
 
-2. Install anaconda (First time only) 
+3. Install anaconda (First time only) 
 ```shell
 curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
 ```
 
-3. Create clean conda environment (First time only) 
+4. Create clean "sias" conda environment (First time only) 
 ```shell
 conda create -n sias python=3.6
 ```
-
-4. Navigate to directory
+5. Activate "sias" conda environment
 ```shell
 conda activate sias
-cd backend
 ```
 
-5. Install dependencies
+7. Navigate to "/sias/backend" directory
+```shell
+cd /sias/backend
+```
+
+6. Install dependencies
 ```shell
 pip install -r requirements.txt
 ```
@@ -68,28 +76,39 @@ pip install -r requirements.txt
 ## Scheduler
 To run scheduler service locally
 
-1. Install JDK 1.8+ (First time only) 
+1. Navigate back to "/sias" directory
+```shell
+cd /sias
+```
+
+2. Install JDK 1.8+ (First time only) 
 ```shell
 sudo apt install default-jdk
 ```
 
-2. Navigate to directory
+3. Navigate to "sias/scheduler/code-with-quarkus" directory
 ```shell
-cd scheduler/code-with-quarkus
+cd /sias/scheduler/code-with-quarkus
 ```
 
 ## Start all the processes in seperate Terminals
 1. Start Frontend
+Open new terminal
 ```shell
+cd /sias/frontend
 npm start
 ```
 
 2. Start Backend
+Open new terminal
 ```shell
+cd /sias/backend
 python app.py
 ```
 
 3. Start the Scheduler application
+Open new terminal
 ```shell
+cd /sias/scheduler/code-with-quarkus
 ./mvnw compile quarkus:dev
 ```
