@@ -83,7 +83,7 @@ cd /sias/backend
 7. Install dependencies
 ```shell
 pip install -r requirements.txt
-pip install flask_cors
+### pip install flask_cors
 ```
 
 8. Install JDK 1.8+ (First time only) 
