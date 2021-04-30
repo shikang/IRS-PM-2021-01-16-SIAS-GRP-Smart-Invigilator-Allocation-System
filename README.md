@@ -13,6 +13,7 @@ Browser: Firefox 85.0.1
 ```shell
 git clone https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
 mv IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System sias
+cd sias
 ```
 
 ## Frontend
