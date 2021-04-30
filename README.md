@@ -24,7 +24,7 @@ npm install
 npm start
 ```
 
-## Backend / Scheduled Task
+## Backend
 To run backend locally
 
 1. Create clean conda environment (First time only) 
@@ -43,7 +43,7 @@ cd backend
 pip install -r requirements.txt
 ```
 
-4. Start Backend / Scheduled Task
+4. Start Backend
 ```shell
 python app.py
 ```

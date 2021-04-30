@@ -262,8 +262,12 @@ def start_allocation():
     #    s['timestamp'] = (float(val - mean_val) / float(max_val - min_val) + 1.0) / 2.0
 
     t_list = []
+    now = int(time.time()) 
     for s in request_body['staffList']:
-        t_list.append(s['timestamp'])
+        if s['timestamp'] is None:
+            t_list.append(now)
+        else:
+            t_list.append(s['timestamp'])
 
     it_list = numpy.argsort(t_list)
     for i in range(len(it_list)):
