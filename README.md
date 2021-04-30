@@ -87,7 +87,7 @@ cd /sias/backend
 pip install -r requirements.txt
 ```
 
-Note: In case is "Flask-Cors" was not installed from the above command, run this command
+    Note: In case is "Flask-Cors" was not installed from the above command, run this command
 ```shell
 pip install flask_cors
 ```
