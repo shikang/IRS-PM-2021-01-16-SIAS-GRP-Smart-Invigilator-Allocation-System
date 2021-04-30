@@ -9,16 +9,10 @@ Browser: Firefox 85.0.1
 
 ## Download the Package and Extract the content
 
-1. Create a Folder to extract the Package
-```shell
-mkdir sias
-cd sias
-```
-
-2. Extract the Package from GitHub
+1. Extract the Package from GitHub and move into SIAS folder
 ```shell
 git clone https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
-cd IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
+mv IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System sias
 ```
 
 ## Frontend
