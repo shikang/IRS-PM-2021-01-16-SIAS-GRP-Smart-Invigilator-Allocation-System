@@ -1,6 +1,6 @@
 # SIAS
 
-Refer to SIAS_Installation_Guide.pdf under /Miscellaneous/Documents folder for more details.
+Refer to SIAS_Installation_Guide.pdf for more details.
 
 ## Tested on
 
