@@ -50,45 +50,45 @@ sudo apt install curl
 
 3. Install anaconda (First time only) 
 ```shell
-curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-bash Anaconda3-2019.03-Linux-x86_64.sh
+cd /tmp
+curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+bash Anaconda3-2020.02-Linux-x86_64.sh
+```
+    Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
+
+    Press "Enter" key to confirm the installation location.
+
+    Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
+
+    Activate the installation by typing following command
+```shell
+source ~/.bashrc
 ```
 
 4. Create clean "sias" conda environment (First time only) 
 ```shell
-conda create -n sias python=3.6
+conda create -n sias python=3.7
 ```
+
 5. Activate "sias" conda environment
 ```shell
 conda activate sias
 ```
 
-7. Navigate to "/sias/backend" directory
+6. Navigate to "/sias/backend" directory
 ```shell
 cd /sias/backend
 ```
 
-6. Install dependencies
+7. Install dependencies
 ```shell
 pip install -r requirements.txt
+### pip install flask_cors
 ```
 
-## Scheduler
-To run scheduler service locally
-
-1. Navigate back to "/sias" directory
-```shell
-cd /sias
-```
-
-2. Install JDK 1.8+ (First time only) 
+8. Install JDK 1.8+ (First time only) 
 ```shell
 sudo apt install default-jdk
-```
-
-3. Navigate to "sias/scheduler/code-with-quarkus" directory
-```shell
-cd /sias/scheduler/code-with-quarkus
 ```
 
 ## Start all the processes in seperate Terminals
@@ -106,7 +106,7 @@ cd /sias/backend
 python app.py
 ```
 
-3. Start the Scheduler application
+3. Start the Scheduler services
 Open new terminal
 ```shell
 cd /sias/scheduler/code-with-quarkus
