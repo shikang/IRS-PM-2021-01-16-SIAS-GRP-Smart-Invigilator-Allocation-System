@@ -42,7 +42,7 @@ npm start
 ## Backend
 To run backend locally
 
-1. Install anaconda
+1. Install anaconda (First time only) 
 ```shell
 curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
@@ -72,7 +72,7 @@ python app.py
 ## Scheduler
 To run scheduler service locally
 
-1. Install JDK 1.8+
+1. Install JDK 1.8+ (First time only) 
 ```shell
 sudo apt install default-jdk
 ```
