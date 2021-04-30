@@ -1,10 +1,10 @@
 # SIAS
 
 ## Tested on
-
 OS: Ubuntu-18.04 / Ubuntu-20.04
-
 Browser: Firefox 85.0.1
+
+
 
 ## Frontend
 To run frontend locally
