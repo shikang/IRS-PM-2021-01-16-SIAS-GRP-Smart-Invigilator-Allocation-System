@@ -1,5 +1,7 @@
 # SIAS
 
+## For more details refer to SIAS_Installation_Guide.pdf
+
 ## Tested on
 
 OS: Ubuntu-18.04 / Ubuntu-20.04
@@ -83,7 +85,11 @@ cd /sias/backend
 7. Install dependencies
 ```shell
 pip install -r requirements.txt
-### pip install flask_cors
+```
+
+Note: In case is "Flask-Cors" was not installed from the above command, run this command
+```shell
+pip install flask_cors
 ```
 
 8. Install JDK 1.8+ (First time only) 
@@ -92,11 +98,13 @@ sudo apt install default-jdk
 ```
 
 ## Start all the processes in seperate Terminals
-1. Start Frontend
+Process should be started in this sequence: Scheduler -> Backend -> Frontend
+
+1. Start the Scheduler services
 Open new terminal
 ```shell
-cd /sias/frontend
-npm start
+cd /sias/scheduler/code-with-quarkus
+./mvnw compile quarkus:dev
 ```
 
 2. Start Backend
@@ -106,9 +114,13 @@ cd /sias/backend
 python app.py
 ```
 
-3. Start the Scheduler services
+3. Start Frontend
 Open new terminal
 ```shell
-cd /sias/scheduler/code-with-quarkus
-./mvnw compile quarkus:dev
+cd /sias/frontend
+npm start
 ```
+
+
+
+
