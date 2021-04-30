@@ -1,10 +1,25 @@
 # SIAS
 
 ## Tested on
+
 OS: Ubuntu-18.04 / Ubuntu-20.04
+
 Browser: Firefox 85.0.1
 
 
+## Download the Package and Extract the content
+
+1. Create a Folder to extract the Package
+```shell
+mkdir sias
+cd sias
+```
+
+2. Extract the Package from GitHub
+```shell
+git clone https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
+cd IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
+```
 
 ## Frontend
 To run frontend locally
