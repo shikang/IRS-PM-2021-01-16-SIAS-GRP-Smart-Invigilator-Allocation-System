@@ -50,8 +50,17 @@ sudo apt install curl
 
 3. Install anaconda (First time only) 
 ```shell
-curl -O https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-bash Anaconda3-2019.03-Linux-x86_64.sh
+cd /tmp
+curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+bash Anaconda3-2020.02-Linux-x86_64.sh
+```
+Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
+Press "Enter" key to confirm the installation location.
+Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
+
+Activate the installation
+```shell
+source ~/.bashrc
 ```
 
 4. Create clean "sias" conda environment (First time only) 
