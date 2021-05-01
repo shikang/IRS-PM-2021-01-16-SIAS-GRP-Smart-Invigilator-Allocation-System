@@ -1,4 +1,4 @@
-# SIAS
+# Smart Invigilator Allocation System (SIAS)
 
 Refer to SIAS_Installation_Guide.pdf for more details.
 
