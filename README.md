@@ -92,7 +92,7 @@ The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. Al
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
 The installation may take a few minutes. After installation the below screenshot will be seen in the terminal.<br>
-![](/Miscellaneous/Images/Start_Scheduler.jpg)
+![Screen Shot](/Miscellaneous/Images/Start_Scheduler.jpg)
 
 ### Step-4: Start Services for SIAS Application<br>
 Services for SIAS application should be started in this sequence: **`Scheduler -> Backend -> Frontend`**<br>
@@ -102,7 +102,7 @@ Open a new Terminal and execute the following commands to start the scheduler<br
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
 After starting the Scheduler the text similar to below screenshot will be seen in the terminal.<br>
-![](/Miscellaneous/Images/Start_Scheduler.jpg)
+![Screen Shot](/Miscellaneous/Images/Start_Scheduler.jpg)
 
 **2. Start the Backend**<br>
 Open a new Terminal and execute the following commands to start the Backend process<br>
@@ -111,7 +111,7 @@ Open a new Terminal and execute the following commands to start the Backend proc
 &nbsp;&nbsp;&nbsp;&nbsp;`python app.py`
 
 After starting the backend application, the below text will be seen in the terminal.<br>
-![](/Miscellaneous/Images/Start_Backend.jpg)
+![Screen Shot](/Miscellaneous/Images/Start_Backend.jpg)
 
 **3. Start the Frontend**<br>
 Open a new Terminal and execute the following commands to start the Frontend application<br>
@@ -119,12 +119,12 @@ Open a new Terminal and execute the following commands to start the Frontend app
 &nbsp;&nbsp;&nbsp;&nbsp;`npm start`
 
 After starting the frontend application, the below text will be seen in the terminal.<br>
-![](/Miscellaneous/Images/Start_Frontend.jpg)
+![Screen Shot](/Miscellaneous/Images/Start_Frontend.jpg)
 
 Upon starting the Frontend, the default browser will open up the SIAS application. If not opened, you can open your browser and go to the link: http://localhost:3000
 
 The below page will be displayed.<br>
-![](/Miscellaneous/Images/SIAS_Home.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_Home.jpg)
 
 
 ## Section 5: User Manual
@@ -134,29 +134,37 @@ The below page will be displayed.<br>
 
 **1. Allocation of Invigilation Schedule**<br>
 1.1. On the browser, the SIAS “Allocation” page is displayed showing a blank table. This is because the scheduling is not done. To run the SIAS scheduler and obtain a schedule, click on the “RUN ALLOCATION” button.<br>
-![](/Miscellaneous/Images/SIAS_UM_1.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_1.jpg)
 
 1.2. Upon clicking the button, you should see the following message in the browser: “Allocation is in progress, this may take a while. Please wait...”<br>
-![](/Miscellaneous/Images/SIAS_UM_2.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_2.jpg)
 
 1.3. When the allocation is complete, you will see that the table that was previously blank is now populated.<br>
-![](/Miscellaneous/Images/SIAS_UM_3.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_3.jpg)
 
 1.4. Looking at the terminal running the Scheduler, you can see the scheduler output such as time spent and score.<br>
-![](/Miscellaneous/Images/SIAS_UM_4.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_4.jpg)
 
 **2. Adding Invigilator Preferences to the Schedule**<br>
 2.1. Other than the Duty schedule and Staff list, SIAS also considers for each Staff’s preferences for the invigilation duties. To add in preferences, first, click on “Preferences” in the header bar.<br>
-![](/Miscellaneous/Images/SIAS_UM_5.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_5.jpg)
 
 2.2. In the “Preferences” page, select the Staff in the “Name” section.<br>
-![](/Miscellaneous/Images/SIAS_UM_6.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_6.jpg)
 
 2.3. Then, select the 3 preferred duties for the Staff selected. The duties are labeled by “Day, Time, Module, Room, Role”. (Note that all 3 preferences are given the same priority. Earlier submissions are given higher priorities.)<br>
-![](/Miscellaneous/Images/SIAS_UM_7.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_7.jpg)
 
 2.4. Then click “Submit” to add the Staff’s preferences into the database. You should see a message “Preference Submitted”.<br>
-![](/Miscellaneous/Images/SIAS_UM_8.jpg)
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_8.jpg)
 
 **3. Allocation of Invigilator Schedule with their Preferences**<br>
-3.1. After preferences for all Staff are added into the database, the invigilation schedule can be obtained again with Staff’s preferences taken into account. Click on “Allocations” in the header bar to return to the “Allocations” page.
+3.1. After preferences for all Staff are added into the database, the invigilation schedule can be obtained again with Staff’s preferences taken into account. Click on “Allocations” in the header bar to return to the “Allocations” page.<br>
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_9.jpg)
+
+3.2. When the reallocation is complete, you will see the table populated with the inclusion of invigilator preferences.<br>
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_10.jpg)
+
+3.3. After running the scheduler with preferences added, you will see that the soft score has increased, meaning that some preferences have been met.<br>
+![Screen Shot](/Miscellaneous/Images/SIAS_UM_11.jpg)
+
