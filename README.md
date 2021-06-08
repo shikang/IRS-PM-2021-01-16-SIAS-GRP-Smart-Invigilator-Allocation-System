@@ -123,7 +123,7 @@ After starting the frontend application, the below text will be seen in the term
 
 Upon starting the Frontend, the default browser will open up the SIAS application. If not opened, you can open your browser and go to the link: http://localhost:3000
 
-The below page will be displayed.
+The below page will be displayed.<br>
 ![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/SIAS_Home.jpg)
 
 ## Section 5: User Manual
