@@ -44,24 +44,24 @@ To Install the SIAS application the following pre-requisites needs to be install
 &nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install npm`
 
 **2.** For Backend, install Anaconda, then create a conda environment.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**a.** Install “curl” if not available<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.1.** Install “curl” if not available<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install curl`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**b.** Download and install Anaconda for Linux<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.2.** Download and install Anaconda for Linux<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cd /tmp`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bash Anaconda3-2020.02-Linux-x86_64.sh`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**c.** Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.3.** Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**d.** Press "Enter" key to confirm the installation location.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.4.** Press "Enter" key to confirm the installation location.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**e.** Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.5.** Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**f.** Activate the installation by typing following command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.6.** Activate the installation by typing following command<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`source ~/.bashrc`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**g.** Create clean "sias" conda environment (First time only)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.7.** Create clean "sias" conda environment (First time only)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`conda create -n sias python=3.7`
 
 **3.** For Scheduler, install JDK 1.8+<br>
@@ -133,32 +133,30 @@ The below page will be displayed.<br>
 • Open your web browser and go to the link: http://localhost:3000<br>
 
 **1. Allocation of Invigilation Schedule**<br>
-1. On the browser, the SIAS “Allocation” page is displayed showing a blank table. This is because the scheduling is not done. To run the SIAS scheduler and obtain a schedule, click on the “RUN ALLOCATION” button.<br>
+1.1. On the browser, the SIAS “Allocation” page is displayed showing a blank table. This is because the scheduling is not done. To run the SIAS scheduler and obtain a schedule, click on the “RUN ALLOCATION” button.<br>
 ![](/Miscellaneous/Images/SIAS_UM_1.jpg)
 
-2. Upon clicking the button, you should see the following message in the browser: “Allocation is in progress, this may take a while. Please wait...”<br>
+1.2. Upon clicking the button, you should see the following message in the browser: “Allocation is in progress, this may take a while. Please wait...”<br>
 ![](/Miscellaneous/Images/SIAS_UM_2.jpg)
 
-3. When the allocation is complete, you will see that the table that was previously blank is now populated.<br>
+1.3. When the allocation is complete, you will see that the table that was previously blank is now populated.<br>
 ![](/Miscellaneous/Images/SIAS_UM_3.jpg)
 
-4. Looking at the terminal running the Scheduler, you can see the scheduler output such as time spent and score.<br>
+1.4. Looking at the terminal running the Scheduler, you can see the scheduler output such as time spent and score.<br>
 ![](/Miscellaneous/Images/SIAS_UM_4.jpg)
 
 **2. Adding Invigilator Preferences to the Schedule**<br>
-1. Other than the Duty schedule and Staff list, SIAS also considers for each Staff’s preferences for the invigilation duties. To add in preferences, first, click on “Preferences” in the header bar.<br>
+2.1. Other than the Duty schedule and Staff list, SIAS also considers for each Staff’s preferences for the invigilation duties. To add in preferences, first, click on “Preferences” in the header bar.<br>
 ![](/Miscellaneous/Images/SIAS_UM_5.jpg)
 
-2. In the “Preferences” page, select the Staff in the “Name” section.<br>
+2.2. In the “Preferences” page, select the Staff in the “Name” section.<br>
 ![](/Miscellaneous/Images/SIAS_UM_6.jpg)
 
-3. Then, select the 3 preferred duties for the Staff selected. The duties are labeled by “Day, Time, Module, Room, Role”. (Note that all 3 preferences are given the same priority. Earlier submissions are given higher priorities.)<br>
+2.3. Then, select the 3 preferred duties for the Staff selected. The duties are labeled by “Day, Time, Module, Room, Role”. (Note that all 3 preferences are given the same priority. Earlier submissions are given higher priorities.)<br>
 ![](/Miscellaneous/Images/SIAS_UM_7.jpg)
 
-4. Then click “Submit” to add the Staff’s preferences into the database. You should see a message “Preference Submitted”.<br>
+2.4. Then click “Submit” to add the Staff’s preferences into the database. You should see a message “Preference Submitted”.<br>
 ![](/Miscellaneous/Images/SIAS_UM_8.jpg)
 
-11.4.3 Allocation of Invigilator Schedule with their Preferences
-1. After preferences for all Staff are added into the database, the invigilation schedule
-can be obtained again with Staff’s preferences taken into account. Click on
-“Allocations” in the header bar to return to the “Allocations” page.
+**3. Allocation of Invigilator Schedule with their Preferences**<br>
+3.1. After preferences for all Staff are added into the database, the invigilation schedule can be obtained again with Staff’s preferences taken into account. Click on “Allocations” in the header bar to return to the “Allocations” page.
