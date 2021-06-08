@@ -24,7 +24,7 @@ Smart Invigilator Allocation System (SIAS) is implemented with Python programmin
 | Neoh Shi Kang       | A0229965L   | Setup software architecture (Backend, Frontend, Database)<br>Implement backend and preference page, Integration with<br>Solver, Feature engineering (scaling of time stamp).|e0687373@u.nus.edu |
 | Tan Wee Han         | A0125244N   | Research of optimisation tools, Modelling of invigilator<br>allocation problem into Optaplanner, Implementation of<br>domain objects hard and soft constraints in Optaplanner,<br>Testing on blank VM, Installation Guide and User Manual.|e0689794@u.nus.edu |
 
-## Section 3: SIAS Videos
+## Section 3: Smart Invigilator Allocation System - Videos
 ### Smart Invigilator Allocation System - Promotion Video<br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=ruvLaSyVQDs
 " target="_blank"><img src="http://img.youtube.com/vi/ruvLaSyVQDs/0.jpg" 
@@ -97,141 +97,34 @@ The installation may take a few minutes. After installation the below screenshot
 ### Step-4: Start Services for SIAS Application<br>
 Services for SIAS application should be started in this sequence: **`Scheduler -> Backend -> Frontend`**<br>
 **1. Start the Scheduler**<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Open a new Terminal and execute the following commands<br>
+Open a new Terminal and execute the following commands to start the scheduler<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/scheduler/code-with-quarkus`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
-After starting the Scheduler the text similar to below screenshot will be seen in the terminal.
+After starting the Scheduler the text similar to below screenshot will be seen in the terminal.<br>
 ![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
 
 **2. Start the Backend**<br>
-Open a new Terminal and execute the following commands
+Open a new Terminal and execute the following commands to start the Backend process<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/backend`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`conda activate sias`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`python app.py`
 
-After starting the backend application, the below text will be seen in the terminal.
+After starting the backend application, the below text will be seen in the terminal.<br>
+![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Backend.jpg)
 
+**3. Start the Frontend**<br>
+Open a new Terminal and execute the following commands to start the Frontend application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/frontend`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`npm start`
 
-## Tested on
+After starting the frontend application, the below text will be seen in the terminal.<br>
+![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Frontend.jpg)
 
-OS: Ubuntu-18.04 / Ubuntu-20.04
+Upon starting the Frontend, the default browser will open up the SIAS application. If not opened, you can open your browser and go to the link: http://localhost:3000
 
-Browser: Firefox 85.0.1
+The below page will be displayed.
+![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/SIAS_Home.jpg)
 
-
-## Download the Package and Extract the content
-
-1. Extract the Package from GitHub and move into "/sias" directory (First time only)
-```shell
-git clone https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System
-sudo mv IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System /sias
-cd /sias
-```
-
-## Frontend
-To run frontend locally
-
-1. Install Node Package Manager (First time only) 
-```shell
-sudo apt update
-sudo apt install npm
-```
-
-2. Navigate to "/sias/frontend" directory
-```shell
-cd /sias/frontend
-```
-
-3. Install dependencies
-```shell
-npm install
-```
-
-## Backend
-To run backend locally
-
-1. Navigate back to "sias" directory
-```shell
-cd /sias
-```
-
-2. Install curl (if required)
-```shell
-sudo apt install curl
-```
-
-3. Install anaconda (First time only) 
-```shell
-cd /tmp
-curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
-bash Anaconda3-2020.02-Linux-x86_64.sh
-```
-    Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
-
-    Press "Enter" key to confirm the installation location.
-
-    Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
-
-    Activate the installation by typing following command
-```shell
-source ~/.bashrc
-```
-
-4. Create clean "sias" conda environment (First time only) 
-```shell
-conda create -n sias python=3.7
-```
-
-5. Activate "sias" conda environment
-```shell
-conda activate sias
-```
-
-6. Navigate to "/sias/backend" directory
-```shell
-cd /sias/backend
-```
-
-7. Install dependencies
-```shell
-pip install -r requirements.txt
-```
-
-    Note: In case if "Flask-Cors" was not installed from the above command, run this command
-```shell
-pip install flask_cors
-```
-
-8. Install JDK 1.8+ (First time only) 
-```shell
-sudo apt install default-jdk
-```
-
-## Start all the processes in seperate Terminals
-Process should be started in this sequence: Scheduler -> Backend -> Frontend
-
-1. Start the Scheduler services
-Open new terminal
-```shell
-cd /sias/scheduler/code-with-quarkus
-./mvnw compile quarkus:dev
-```
-
-2. Start Backend
-Open new terminal
-```shell
-cd /sias/backend
-python app.py
-```
-
-3. Start Frontend
-Open new terminal
-```shell
-cd /sias/frontend
-npm start
-```
-
-
-
-
+## Section 5: User Manual
+### Step-1: Installation of Pre-Requisites
