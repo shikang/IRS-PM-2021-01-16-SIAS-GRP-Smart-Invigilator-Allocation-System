@@ -44,25 +44,25 @@ To Install the SIAS application the following pre-requisites needs to be install
 &nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install npm`
 
 **2.** For Backend, install Anaconda, then create a conda environment.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;**a.** Install “curl” if not available<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install curl`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**a.** Install “curl” if not available<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install curl`
 
-&nbsp;&nbsp;&nbsp;&nbsp;**b.** Download and install Anaconda for Linux<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`cd /tmp`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`bash Anaconda3-2020.02-Linux-x86_64.sh`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**b.** Download and install Anaconda for Linux<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cd /tmp`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bash Anaconda3-2020.02-Linux-x86_64.sh`
 
-&nbsp;&nbsp;&nbsp;&nbsp;**c.** Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**c.** Use "Enter" key to review the license agreement and type "yes" at the bottom to agree the terms.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**d.** Press "Enter" key to confirm the installation location.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**d.** Press "Enter" key to confirm the installation location.
 
-&nbsp;&nbsp;&nbsp;&nbsp;**e.** Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**e.** Press "yes" when prompted for "Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]"
 
-&nbsp;&nbsp;&nbsp;&nbsp;**f.** Activate the installation by typing following command<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`source ~/.bashrc`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**f.** Activate the installation by typing following command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`source ~/.bashrc`
 
-&nbsp;&nbsp;&nbsp;&nbsp;**g.** Create clean "sias" conda environment (First time only)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`conda create -n sias python=3.7`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**g.** Create clean "sias" conda environment (First time only)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`conda create -n sias python=3.7`
 
 **3.** For Scheduler, install JDK 1.8+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`sudo apt install default-jdk`
@@ -75,11 +75,11 @@ To download / extract the package from GitHub and move into "/sias" directory in
 
 ### Step-3: Installation of SIAS Application<br>
 The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. All the commands have to be executed from terminal.<br>
-**1:** Installation of dependencies for Frontend<br>
+**1.** Installation of dependencies for Frontend<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/frontend`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`npm install`<br>
 
-**2:** For Backend, activate “sias” conda environment and install dependencies<br>
+**2.** For Backend, activate “sias” conda environment and install dependencies<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/backend`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`conda activate sias`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`pip install -r requirements.txt`<br>
@@ -87,12 +87,30 @@ The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. Al
 &nbsp;&nbsp;&nbsp;&nbsp;***Note:*** In case if “flask-cors” is not installed from the above command, run the below command<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`pip install flask_cors`<br>
 
-**3:** Install and start the Scheduler<br>
+**3.** Install and start the Scheduler<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/scheduler/code-with-quarkus`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`<br>
-The installation may take a few minutes. After installation, you should see the following in the terminal:
+&nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
+
+The installation may take a few minutes. After installation the below screenshot will be seen in the terminal.
 ![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
 
+### Step-4: Start Services for SIAS Application<br>
+Services for SIAS application should be started in this sequence: **`Scheduler -> Backend -> Frontend`**<br>
+**1. Start the Scheduler**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Open a new Terminal and execute the following commands<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/scheduler/code-with-quarkus`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
+
+After starting the Scheduler the text similar to below screenshot will be seen in the terminal.
+![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
+
+**2. Start the Backend**<br>
+Open a new Terminal and execute the following commands
+&nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/backend`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`conda activate sias`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`python app.py`
+
+After starting the backend application, the below text will be seen in the terminal.
 
 
 ## Tested on
