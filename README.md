@@ -27,13 +27,13 @@ Smart Invigilator Allocation System (SIAS) is implemented with Python programmin
 ## Section 3: Smart Invigilator Allocation System - Videos
 ### Smart Invigilator Allocation System - Promotion Video<br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=ruvLaSyVQDs
-" target="_blank"><img src="https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/SIAS_Promotion_Video.jpg" 
+" target="_blank"><img src="/Miscellaneous/Images/SIAS_Promotion_Video.jpg" 
 alt="Smart Invigilator Allocation System - Promotion Video" width="2000" height="500" border="10" /></a>
 
 ### Smart Invigilator Allocation System - Product Demo Video<br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=7fz9EdyHzmQ
-" target="_blank"><img src="http://img.youtube.com/vi/7fz9EdyHzmQ/0.jpg" 
-alt="Smart Invigilator Allocation System - Promotion Video" width="2000" height="500" border="10" /></a>
+" target="_blank"><img src="/Miscellaneous/Images/SIAS_Product_Demo_Video.jpg" 
+alt="Smart Invigilator Allocation System - Product Demo Video" width="2000" height="500" border="10" /></a>
 
 ## Section 4: Installation Guide
 ### Step-1: Installation of Pre-Requisites
@@ -92,7 +92,7 @@ The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. Al
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
 The installation may take a few minutes. After installation the below screenshot will be seen in the terminal.
-![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
+![](/Miscellaneous/Images/Start_Scheduler.jpg)
 
 ### Step-4: Start Services for SIAS Application<br>
 Services for SIAS application should be started in this sequence: **`Scheduler -> Backend -> Frontend`**<br>
@@ -102,7 +102,7 @@ Open a new Terminal and execute the following commands to start the scheduler<br
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
 After starting the Scheduler the text similar to below screenshot will be seen in the terminal.<br>
-![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
+![](/Miscellaneous/Images/Start_Scheduler.jpg)
 
 **2. Start the Backend**<br>
 Open a new Terminal and execute the following commands to start the Backend process<br>
@@ -111,7 +111,7 @@ Open a new Terminal and execute the following commands to start the Backend proc
 &nbsp;&nbsp;&nbsp;&nbsp;`python app.py`
 
 After starting the backend application, the below text will be seen in the terminal.<br>
-![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Backend.jpg)
+![](/Miscellaneous/Images/Start_Backend.jpg)
 
 **3. Start the Frontend**<br>
 Open a new Terminal and execute the following commands to start the Frontend application<br>
@@ -119,12 +119,13 @@ Open a new Terminal and execute the following commands to start the Frontend app
 &nbsp;&nbsp;&nbsp;&nbsp;`npm start`
 
 After starting the frontend application, the below text will be seen in the terminal.<br>
-![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Frontend.jpg)
+![](/Miscellaneous/Images/Start_Frontend.jpg)
 
 Upon starting the Frontend, the default browser will open up the SIAS application. If not opened, you can open your browser and go to the link: http://localhost:3000
 
 The below page will be displayed.<br>
-![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/SIAS_Home.jpg)
+![](/Miscellaneous/Images/SIAS_Home.jpg)
+
 
 ## Section 5: User Manual
 ### Step-1: Installation of Pre-Requisites
