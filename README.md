@@ -168,3 +168,14 @@ The below page will be displayed.<br>
 3.3. After running the scheduler with preferences added, you will see that the soft score has increased, meaning that some preferences have been met.<br>
 ![Screen Shot](/Miscellaneous/Images/SIAS_UM_11.jpg)
 
+## Section 6: Project Report
+For complete details refer to the Project Report: [NUS ISS PM SIAS Project Report](https://www.google.com)
+Key topics covered in the Project Report:
+&nbsp;&nbsp;&nbsp;&nbsp;1. Executive Summary
+&nbsp;&nbsp;&nbsp;&nbsp;2. Problem Statement and Objectives
+&nbsp;&nbsp;&nbsp;&nbsp;3. Solution
+&nbsp;&nbsp;&nbsp;&nbsp;4. Input Data and Rules
+&nbsp;&nbsp;&nbsp;&nbsp;5. Assumptions and Contraints
+&nbsp;&nbsp;&nbsp;&nbsp;6. Testing Approach
+&nbsp;&nbsp;&nbsp;&nbsp;7. Conclusion and Future expansion
+&nbsp;&nbsp;&nbsp;&nbsp;8. Appendix
