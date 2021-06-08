@@ -91,7 +91,7 @@ The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. Al
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/scheduler/code-with-quarkus`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`
 
-The installation may take a few minutes. After installation the below screenshot will be seen in the terminal.
+The installation may take a few minutes. After installation the below screenshot will be seen in the terminal.<br>
 ![](/Miscellaneous/Images/Start_Scheduler.jpg)
 
 ### Step-4: Start Services for SIAS Application<br>
