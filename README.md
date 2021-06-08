@@ -91,7 +91,7 @@ The SIAS project comprises of 3 components: Frontend, Backend, and Scheduler. Al
 &nbsp;&nbsp;&nbsp;&nbsp;`cd /sias/scheduler/code-with-quarkus`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`./mvnw compile quarkus:dev`<br>
 The installation may take a few minutes. After installation, you should see the following in the terminal:
-<img src="https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg>
+![](https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/Start_Scheduler.jpg)
 
 
 
