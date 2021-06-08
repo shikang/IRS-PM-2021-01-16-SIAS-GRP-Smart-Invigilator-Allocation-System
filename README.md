@@ -128,4 +128,37 @@ The below page will be displayed.<br>
 
 
 ## Section 5: User Manual
-### Step-1: Installation of Pre-Requisites
+### Keynote:<br>
+• Ensure all the services are started for SIAS application **`Scheduler -> Backend -> Frontend`**<br>
+• Open your web browser and go to the link: http://localhost:3000<br>
+
+**1. Allocation of Invigilation Schedule**<br>
+1. On the browser, the SIAS “Allocation” page is displayed showing a blank table. This is because the scheduling is not done. To run the SIAS scheduler and obtain a schedule, click on the “RUN ALLOCATION” button.<br>
+![](/Miscellaneous/Images/SIAS_UM_1.jpg)
+
+2. Upon clicking the button, you should see the following message in the browser: “Allocation is in progress, this may take a while. Please wait...”<br>
+![](/Miscellaneous/Images/SIAS_UM_2.jpg)
+
+3. When the allocation is complete, you will see that the table that was previously blank is now populated.<br>
+![](/Miscellaneous/Images/SIAS_UM_3.jpg)
+
+4. Looking at the terminal running the Scheduler, you can see the scheduler output such as time spent and score.<br>
+![](/Miscellaneous/Images/SIAS_UM_4.jpg)
+
+**2. Adding Invigilator Preferences to the Schedule**<br>
+1. Other than the Duty schedule and Staff list, SIAS also considers for each Staff’s preferences for the invigilation duties. To add in preferences, first, click on “Preferences” in the header bar.<br>
+![](/Miscellaneous/Images/SIAS_UM_5.jpg)
+
+2. In the “Preferences” page, select the Staff in the “Name” section.<br>
+![](/Miscellaneous/Images/SIAS_UM_6.jpg)
+
+3. Then, select the 3 preferred duties for the Staff selected. The duties are labeled by “Day, Time, Module, Room, Role”. (Note that all 3 preferences are given the same priority. Earlier submissions are given higher priorities.)<br>
+![](/Miscellaneous/Images/SIAS_UM_7.jpg)
+
+4. Then click “Submit” to add the Staff’s preferences into the database. You should see a message “Preference Submitted”.<br>
+![](/Miscellaneous/Images/SIAS_UM_8.jpg)
+
+11.4.3 Allocation of Invigilator Schedule with their Preferences
+1. After preferences for all Staff are added into the database, the invigilation schedule
+can be obtained again with Staff’s preferences taken into account. Click on
+“Allocations” in the header bar to return to the “Allocations” page.
