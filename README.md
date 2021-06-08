@@ -1,4 +1,8 @@
+<hr style="border:2px solid gray"> </hr>
+
 # Project Title: Smart Invigilator Allocation System (SIAS)
+<hr style="border:2px solid gray"> </hr>
+
 ## Section 1: Executive Summary
 A Polytechnic in Singapore is manually allocating invigilators duty to test venue. Multiple data points should be considered during the allocation process, which is not only challenging and time-consuming task but also prone to human errors. The data consists of the lecturers, examination dates and time, class group, test venue and test module. Given the complexity of the manual allocation, the examination officer is unable to accommodate other vital information such as invigilators calendar, preference, etc., during the allocation.
 
@@ -14,6 +18,7 @@ Allocation and reallocation of invigilators can be performed at three stages in 
 &nbsp;&nbsp;&nbsp;**Stage-3:** Reallocation on the day of examination based on invigilator attendance
 
 Smart Invigilator Allocation System (SIAS) is implemented with Python programming language with Flask having web-based user interface for users interact with the application. Java script is used for scheduler and SQLite to store the data.
+<hr style="border:2px solid gray"> </hr>
 
 ## Section 2: Credits / Project Contribution
 
@@ -23,6 +28,7 @@ Smart Invigilator Allocation System (SIAS) is implemented with Python programmin
 | Yusuf Pranggonoh    | A0229966J   | Conceptualise business requirements, Interview the<br>person-in-charge, Preparation of test source data,<br>Perform end-to end testing, Produce Videos, <br>Implementation of Frontend user interfaces.|e0687374@u.nus.edu |
 | Neoh Shi Kang       | A0229965L   | Setup software architecture (Backend, Frontend, Database)<br>Implement backend and preference page, Integration with<br>Solver, Feature engineering (scaling of time stamp).|e0687373@u.nus.edu |
 | Tan Wee Han         | A0125244N   | Research of optimisation tools, Modelling of invigilator<br>allocation problem into Optaplanner, Implementation of<br>domain objects hard and soft constraints in Optaplanner,<br>Testing on blank VM, Installation Guide and User Manual.|e0689794@u.nus.edu |
+<hr style="border:2px solid gray"> </hr>
 
 ## Section 3: Smart Invigilator Allocation System - Videos
 ### Smart Invigilator Allocation System - Promotion Video<br>
@@ -34,6 +40,7 @@ alt="Smart Invigilator Allocation System - Promotion Video" width="2000" height=
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=7fz9EdyHzmQ
 " target="_blank"><img src="/Miscellaneous/Images/SIAS_Product_Demo_Video.jpg" 
 alt="Smart Invigilator Allocation System - Product Demo Video" width="2000" height="500" border="10" /></a>
+<hr style="border:2px solid gray"> </hr>
 
 ## Section 4: Installation Guide
 ### Step-1: Installation of Pre-Requisites
@@ -125,7 +132,7 @@ Upon starting the Frontend, the default browser will open up the SIAS applicatio
 
 The below page will be displayed.<br>
 ![Screen Shot](/Miscellaneous/Images/SIAS_Home.jpg)
-
+<hr style="border:2px solid gray"> </hr>
 
 ## Section 5: User Manual
 ### Keynote:<br>
@@ -167,15 +174,17 @@ The below page will be displayed.<br>
 
 3.3. After running the scheduler with preferences added, you will see that the soft score has increased, meaning that some preferences have been met.<br>
 ![Screen Shot](/Miscellaneous/Images/SIAS_UM_11.jpg)
+<hr style="border:2px solid gray"> </hr>
 
 ## Section 6: Project Report
-For complete details refer to the Project Report: [NUS ISS PM SIAS Project Report](https://www.google.com)
-Key topics covered in the Project Report:
-&nbsp;&nbsp;&nbsp;&nbsp;1. Executive Summary
-&nbsp;&nbsp;&nbsp;&nbsp;2. Problem Statement and Objectives
-&nbsp;&nbsp;&nbsp;&nbsp;3. Solution
-&nbsp;&nbsp;&nbsp;&nbsp;4. Input Data and Rules
-&nbsp;&nbsp;&nbsp;&nbsp;5. Assumptions and Contraints
-&nbsp;&nbsp;&nbsp;&nbsp;6. Testing Approach
-&nbsp;&nbsp;&nbsp;&nbsp;7. Conclusion and Future expansion
-&nbsp;&nbsp;&nbsp;&nbsp;8. Appendix
+For complete details refer to the Project Report: [NUS ISS PM SIAS Project Report](https://www.google.com)<br>
+Key topics covered in the Project Report:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1. Executive Summary<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2. Problem Statement and Objectives<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3. Solution<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4. Input Data and Rules<br>
+&nbsp;&nbsp;&nbsp;&nbsp;5. Assumptions and Contraints<br>
+&nbsp;&nbsp;&nbsp;&nbsp;6. Testing Approach<br>
+&nbsp;&nbsp;&nbsp;&nbsp;7. Conclusion and Future expansion<br>
+&nbsp;&nbsp;&nbsp;&nbsp;8. Appendix<br>
+<hr style="border:2px solid gray"> </hr>
