@@ -177,7 +177,7 @@ The below page will be displayed.<br>
 <hr style="border:2px solid gray"> </hr>
 
 ## Section 6: Project Report
-For complete details refer to the Project Report: [NUS ISS PM SIAS Project Report](https://www.google.com)<br>
+For complete details refer to the Project Report: [NUS ISS PM SIAS Project Report](/Project%20Report/SIAS_Project_Report.pdf)<br>
 Key topics covered in the Project Report:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. Executive Summary<br>
 &nbsp;&nbsp;&nbsp;&nbsp;2. Problem Statement and Objectives<br>
