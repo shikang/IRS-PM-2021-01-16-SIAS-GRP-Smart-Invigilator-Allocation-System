@@ -27,7 +27,7 @@ Smart Invigilator Allocation System (SIAS) is implemented with Python programmin
 ## Section 3: Smart Invigilator Allocation System - Videos
 ### Smart Invigilator Allocation System - Promotion Video<br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=ruvLaSyVQDs
-" target="_blank"><img src="http://img.youtube.com/vi/ruvLaSyVQDs/0.jpg" 
+" target="_blank"><img src="https://github.com/shikang/IRS-PM-2021-01-16-SIAS-GRP-Smart-Invigilator-Allocation-System/blob/main/Miscellaneous/Images/SIAS_Promotion_Video.jpg" 
 alt="Smart Invigilator Allocation System - Promotion Video" width="2000" height="500" border="10" /></a>
 
 ### Smart Invigilator Allocation System - Product Demo Video<br>
